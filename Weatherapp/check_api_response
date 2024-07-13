@@ -1,0 +1,21 @@
+import requests
+
+# Define the API URL
+url = 'http://api.openweathermap.org/data/2.5/weather?q=London&appid=your_api_key_here&units=metric'
+
+# Send the GET request
+response = requests.get(url)
+
+# Check the Content-Type header
+content_type = response.headers.get('Content-Type')
+print('Content-Type:', content_type)
+
+# Print the response text
+print('Response Text:', response.text)
+
+# Try to parse as JSON
+try:
+    weather_data = response.json()
+    print('Response is JSON:', weather_data)
+except ValueError:
+    print('Response is not JSON')
